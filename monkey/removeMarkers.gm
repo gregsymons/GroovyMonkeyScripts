@@ -1,0 +1,20 @@
+/*
+ * Menu: Remove Markers
+ * Script-Path: /GroovyMonkeyScripts/monkey/removeMarkers.gm
+ * Kudos: ERVIN
+ * License: EPL 1.0
+ * DOM: http://groovy-monkey.sourceforge.net/update/plugins/net.sf.groovyMonkey.dom
+ */
+import org.eclipse.core.resources.*
+
+out.clear()
+workspace.root.projects.each
+{ project ->
+ out.println "${project.name}"
+ if (project.
+ project.findMarkers( null, true, IResource.DEPTH_INFINITE ).each
+ { marker ->
+  out.println "  ** ${marker.type} ${marker.id} ${marker.attributes}"
+   marker.delete()
+ }
+}
